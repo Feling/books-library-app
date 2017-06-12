@@ -5,18 +5,31 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { BookComponent } from './book/book.component';
+import { BooksComponent } from './books/books.component';
+import {BooksService} from "./books/books.service";
+import {MdToolbarModule} from '@angular/material';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {MdCardModule} from '@angular/material';
+import {MdButtonModule} from '@angular/material';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BookComponent
+    BookComponent,
+    BooksComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    BrowserAnimationsModule,
+    MdToolbarModule,
+    MdCardModule,
+    MdButtonModule,
   ],
-  providers: [],
+  providers: [BooksService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
