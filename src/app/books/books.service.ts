@@ -7,11 +7,11 @@ import {Observer} from "rxjs/Observer";
 export class BooksService {
 
   private books: Book[] = [
-    {name: 'Leonard Byiork', date: '2000-07-22', title: 'First book'},
-    {name: 'Leonard Byiork', date: '2001-08-26', title: 'Secondbook'},
-    {name: 'Leonard Byiork', date: '2002-09-29', title: 'Third book'},
-    {name: 'Leonard Byiork', date: '2003-10-12', title: 'Fird book'},
-    {name: 'Leonard Byiork', date: '2004-11-04', title: 'Fifth book'}
+    {name: 'Eve Byiork', date: '2000-07-22', title: 'First book'},
+    {name: 'Roman Lolik', date: '2001-08-26', title: 'Secondbook'},
+    {name: 'Leonard Bolik', date: '2002-09-29', title: 'Third book'},
+    {name: 'Kobi Tolik', date: '2003-10-12', title: 'Good book'},
+    {name: 'Moshe Vladislav', date: '2004-11-04', title: 'Fifth book'}
   ];
 
   constructor() { }
@@ -25,9 +25,7 @@ export class BooksService {
     return booksLoader;
   }
 
-  getBook(index: number) {
-    return this.books[index];
-  }
+
    addBook(book: Book) {
     this.books.push(book);
   }

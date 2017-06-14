@@ -15,10 +15,9 @@ export class BookComponent implements OnInit {
 @Input() name: string;
 @ViewChild('f') bookForm: NgForm;
 public indexing: number;
-public newBook: Book;
   closeResult: string;
 @Output() bookDeleted = new EventEmitter<void>();
-private relevantBook: Book;
+
  constructor(private booksservice: BooksService, private modalService: NgbModal) { }
 
   onDelete() {
@@ -35,7 +34,7 @@ private relevantBook: Book;
   }
 
   editBook(form: NgForm) {
-    this.book.name= form.value.name;
+    this.book.name = form.value.name;
     this.book.date = form.value.date;
     this.book.title = form.value.title;
   }
