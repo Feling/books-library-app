@@ -5,6 +5,7 @@
 <app-book
     *ngFor="let bks of books; let i = index"
     [book]="bks"
+    [ngClass]="{marked: markedBookIndex === i}"
     (bookDeleted)="onBookDeleted(i)"
     (click)="markedBookIndex = i"
     [index]="i"

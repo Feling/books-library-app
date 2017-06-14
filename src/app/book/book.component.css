@@ -1,5 +1,16 @@
 .example-card {
-  width: 420px;
+  display: block;
   background-color: lightblue;
-  margin: 10px;
 }
+
+:host{
+  display: block;
+  border-radius: 3px;
+  margin: 20px 0;
+  background-color: lightblue;
+  /* padding: 20px;*/
+  box-shadow: 3px 3px 2px #ccc;
+  /* transition: border-color 0.5s ease-out;*/
+  transition: border-color 0.5s ease-out;
+}
+
