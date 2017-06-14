@@ -11,14 +11,15 @@ import {MdToolbarModule} from '@angular/material';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MdCardModule} from '@angular/material';
 import {MdButtonModule} from '@angular/material';
-import { ModalComponent } from './modal/modal.component';
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import { SpecialPipe } from './book/special.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     BookComponent,
     BooksComponent,
-    ModalComponent,
+    SpecialPipe,
   ],
   imports: [
     BrowserModule,
@@ -28,8 +29,10 @@ import { ModalComponent } from './modal/modal.component';
     MdToolbarModule,
     MdCardModule,
     MdButtonModule,
+    NgbModule.forRoot()
   ],
   providers: [BooksService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [BookComponent]
 })
 export class AppModule { }

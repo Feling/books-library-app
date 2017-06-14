@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angula
 import {Book} from "../books/book.model";
 import {NgForm} from "@angular/forms";
 import {BooksService} from "../books/books.service";
+import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-book',
@@ -11,13 +12,14 @@ import {BooksService} from "../books/books.service";
 export class BookComponent implements OnInit {
 @Input() book: Book;
 @Input() index: number;
+@Input() name: string;
 @ViewChild('f') bookForm: NgForm;
 public indexing: number;
 public newBook: Book;
-
+  closeResult: string;
 @Output() bookDeleted = new EventEmitter<void>();
 private relevantBook: Book;
- constructor(private booksservice: BooksService) { }
+ constructor(private booksservice: BooksService, private modalService: NgbModal) { }
 
   onDelete() {
     this.bookDeleted.emit();
@@ -27,17 +29,34 @@ private relevantBook: Book;
 
   }
 
-  addBook(form: NgForm) {
-   const newBook = new Book(form.value.name, form.value.date, form.value.title);
-  this.booksservice.addBook(newBook);
-  form.reset();
- }
-onEdit() {
-  this.newBook = this.booksservice.getBook(this.indexing);
-   this.bookForm.setValue({
-     name: 'Test',
-     date: this.newBook.date,
-     title: this.newBook.title
-   });
-}
+   addBook(form: NgForm) {
+    const newBook = new Book(form.value.name, form.value.date, form.value.title);
+   this.booksservice.addBook(newBook);
+  }
+
+  editBook(form: NgForm) {
+    this.book.name= form.value.name;
+    this.book.date = form.value.date;
+    this.book.title = form.value.title;
+  }
+
+  open(content) {
+    this.modalService.open(content).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+    console.log(this.closeResult);
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
+  }
+
 }

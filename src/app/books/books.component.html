@@ -1,0 +1,11 @@
+<p>
+  books works!
+</p>
+
+<app-book
+    *ngFor="let bks of books; let i = index"
+    [book]="bks"
+    (bookDeleted)="onBookDeleted(i)"
+    (click)="markedBookIndex = i"
+    [index]="i"
+></app-book>
