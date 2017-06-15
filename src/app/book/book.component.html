@@ -1,10 +1,10 @@
 <script src="../app.module.ts"></script>
 <md-card class="example-card">
   <md-card-header>
-    <md-card-title>{{book.title | titlecase | special}}</md-card-title>
-    <md-card-subtitle>{{book.name }} </md-card-subtitle>
-    <md-card-subtitle>{{book.date }} </md-card-subtitle>
-    <md-card-subtitle >{{indexing}} </md-card-subtitle>
+    <md-card-title>Title: {{book.title | titlecase | special}}</md-card-title>
+    <md-card-title>Author: {{book.name }} </md-card-title>
+    <md-card-title>Date: {{book.date }} </md-card-title>
+    <md-card-title>Index: {{indexing}} </md-card-title>
   </md-card-header>
   <md-card-actions>
     <button class="btn btn-lg btn-outline-primary"  (click)="onDelete()">Delete</button>
